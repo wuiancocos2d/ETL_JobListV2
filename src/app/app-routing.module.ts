@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'etl-job-list',
-    loadChildren: './prepare-job-list/etl-job-list.module#EtlJobListModule'
+    loadChildren: './etl-job-list/etl-job-list.module#EtlJobListModule'
   },
   {
     path: '',
