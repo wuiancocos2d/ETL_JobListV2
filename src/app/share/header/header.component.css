@@ -3,18 +3,21 @@
   position: relative;
   height: 64px;
 }
+.nav-container {
+  position: relative;
+  height: 64px;
+  border-bottom: 1px solid #e8e8e8;
+}
 .nav-bar .menu {
   height: 100%;
   line-height: 64px;
 }
 .nav-bar .subBtnant {
   height: 100%;
-  border-bottom: 1px solid #e8e8e8;
 }
 #logoContainer {
   padding: 10px;
   height: 100%;
-  border-bottom: 1px solid #e8e8e8;
 }
 #logo {
   display: block;
@@ -32,12 +35,19 @@
   width: 200px;
 }
 
+
 .nav-collapse {
   position: absolute;
   margin-top: 64px;
   width: 240px;
+  min-height: 700px;
   height: 100%;
+  z-index: 100;
+  background: #ffffff;
 }
+
+
+
 .nav-collapse.hide {
   width: 0;
   overflow: hidden;

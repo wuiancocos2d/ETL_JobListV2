@@ -9,6 +9,6 @@ import { ContainerComponent } from './container/container.component';
     NgZorroAntdModule,
   ],
   declarations: [HeaderComponent, ContainerComponent],
-  exports: [HeaderComponent, ContainerComponent],
+  exports: [HeaderComponent, ContainerComponent, NgZorroAntdModule],
 })
 export class ShareModule { }
