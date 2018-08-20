@@ -1,6 +1,6 @@
 import {Job} from '../models/job';
 
-export const ETL_Jobs: Job[] = [{
+export const eJobs: Job[] = [{
   'Job_Name': 'L_ACA_D_MM_AGT',
   'GetData_day': 0,
   'Data_Type': 'ACCA',

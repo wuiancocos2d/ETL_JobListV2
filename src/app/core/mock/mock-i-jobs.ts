@@ -1,6 +1,6 @@
-import {Job} from '../models/job';
 
-export const I_Jobs: Job[] = [{
+
+export const iJobs: Job[] = [{
   'Job_Name': 'L_OMI_FLIGHT_INFO',
   'Last_TriggerTime': '2018-08-17T00:10:00.443',
   'Last_StartTime': '2018-08-17T00:10:03.137',
