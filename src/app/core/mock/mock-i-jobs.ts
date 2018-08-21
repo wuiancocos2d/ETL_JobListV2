@@ -1,3 +1,4 @@
+import {Job} from '../models/job';
 
 
 export const iJobs: Job[] = [{

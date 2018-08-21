@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Job} from '../../core/models/job';
 
 @Component({
@@ -8,7 +8,7 @@ import {Job} from '../../core/models/job';
 })
 export class JobsComponent implements OnInit {
 
-  jobs: Job[];
+  @Input() jobs: Job[];
   tableData: Job[] = [...this.jobs];
   filterStatusList = [
     {text: 'Ready', value: 'Ready'},

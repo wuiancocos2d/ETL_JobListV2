@@ -7,11 +7,12 @@ import { HomeComponent } from './home.component';
 import { ShareModule } from '../share/share.module';
 import { SelectPanelsComponent } from './components/select-panels/select-panels.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
-    HomeRoutingModule,
     ShareModule,
+    HomeRoutingModule,
   ],
   declarations: [HomeComponent, SelectPanelsComponent]
 })
