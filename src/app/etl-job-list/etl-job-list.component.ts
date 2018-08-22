@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {JobsService} from '../core/services/jobs.service';
 
 @Component({
@@ -10,9 +10,13 @@ export class EtlJobListComponent implements OnInit {
 
   constructor(
     private jobsService: JobsService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
 
+  getJobs(): void {
+    this.jobsService.getJobs('E');
+  }
 }
