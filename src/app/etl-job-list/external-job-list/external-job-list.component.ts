@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {JobsService} from '../../core/services/jobs.service';
+import {Job} from '../../core/models/job';
 
 @Component({
   selector: 'app-external-job-list',
@@ -6,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./external-job-list.component.css']
 })
 export class ExternalJobListComponent implements OnInit {
-  constructor() { }
+  jobs: Job[];
 
-  ngOnInit() {
+  constructor(
+    private jobService: JobsService
+  ) {
   }
 
+  ngOnInit() {
+    this.getJobs();
+  }
+
+  getJobs() {
+    this.jobService.getJobs('E').subscribe(jobs => this.jobs = jobs);
+  }
 }
+

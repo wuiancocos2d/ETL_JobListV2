@@ -1,14 +1,22 @@
-<div class="jobs-container" nz-row>
-  <nz-table [nzData]="tableData">
+<app-container>
+  <nz-table #jobsTable [nzData]="jobs">
     <thead>
     <tr>
-      <th>Job Name</th>
-      <th>End Time</th>
-      <th nzShowFilter [nzFilters]="filterStatusList">Status</th>
+      <th>
+        Job Name
+      </th>
+      <th>
+        Last_EndTime
+      </th>
+      <th nzShowFilter [nzFilters]="filterStatusList" (nzFilterChange)="filterStatusChange($event)">Status</th>
     </tr>
     </thead>
     <tbody>
-        
+      <tr *ngFor="let job of jobsTable.data">
+        <td>{{job.Job_Name}}</td>
+        <td>{{job.Last_StartTime | slice: 11:16}}</td>
+        <td>{{job.Last_Job_Status}}</td>
+      </tr>
     </tbody>
   </nz-table>
-</div>
+</app-container>

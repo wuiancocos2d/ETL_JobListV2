@@ -10,7 +10,8 @@ import {registerLocaleData} from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import {AppRoutingModule} from './app-routing.module';
 import { ShareModule } from './share/share.module';
-
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './core/mock/mock.service';
 
 registerLocaleData(zh);
 
@@ -26,6 +27,9 @@ registerLocaleData(zh);
     NgZorroAntdModule,
     ShareModule,
     AppRoutingModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {dataEncapsulation: false}
+    )
   ],
   providers: [{provide: NZ_I18N, useValue: zh_CN}],
   bootstrap: [AppComponent]
