@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {JobsService} from '../core/services/jobs.service';
+import {Job} from '../core/models/job';
 
 @Component({
   selector: 'app-etl-job-list',
@@ -8,15 +9,18 @@ import {JobsService} from '../core/services/jobs.service';
 })
 export class EtlJobListComponent implements OnInit {
 
+  jobs: Job[];
+
   constructor(
     private jobsService: JobsService
   ) {
   }
 
   ngOnInit() {
+    this.getJobs();
   }
 
   getJobs(): void {
-    this.jobsService.getJobs('E');
+    this.jobsService.getJobs('E').subscribe(jobs => this.jobs = jobs);
   }
 }

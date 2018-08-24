@@ -9,6 +9,10 @@ import {Job} from '../../core/models/job';
 export class JobsComponent implements OnInit {
 
   @Input() jobs: Job[];
+<<<<<<< Updated upstream
+=======
+  @Input() urlPrefix: string;
+>>>>>>> Stashed changes
   displayData: Job[] = this.jobs;
   searchStatus = [];
   filterStatusList = [
@@ -35,7 +39,12 @@ export class JobsComponent implements OnInit {
 
   search(): void {
     const filterFunc = (item) => {
+<<<<<<< Updated upstream
       return (this.searchStatus.length ? this.searchStatus.some(statu => item.Last_Job_Status.indexOf(statu) !== -1) : true);
+=======
+      return (this.searchStatus.length ? this.searchStatus
+        .some(statu => item.Last_Job_Status.indexOf(statu) !== -1) : true);
+>>>>>>> Stashed changes
     };
     const data = this.jobs.filter(item => filterFunc(item));
     this.displayData = data;

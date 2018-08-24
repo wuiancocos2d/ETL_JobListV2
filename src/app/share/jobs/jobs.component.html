@@ -1,7 +1,10 @@
 <app-container>
+<<<<<<< Updated upstream
   <div class="jobs-operations">
     <button nz-button >Select Data Type</button>
   </div>
+=======
+>>>>>>> Stashed changes
   <nz-table #jobsTable [nzData]="displayData">
     <thead>
     <tr>
@@ -18,7 +21,13 @@
       <tr *ngFor="let job of jobsTable.data">
         <td>{{job.Job_Name}}</td>
         <td>{{job.Last_StartTime | slice: 11:16}}</td>
+<<<<<<< Updated upstream
         <td ><a routerLink="{{job.Job_Name}}">{{job.Last_Job_Status}}</a></td>
+=======
+        <td>
+          {{job.Last_Job_Status}}
+        </td>
+>>>>>>> Stashed changes
       </tr>
     </tbody>
   </nz-table>
