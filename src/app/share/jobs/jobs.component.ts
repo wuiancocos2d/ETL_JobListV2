@@ -9,7 +9,7 @@ import {Job} from '../../core/models/job';
 export class JobsComponent implements OnInit {
 
   @Input() jobs: Job[];
-  displayData: Job[] = this.jobs ;
+  displayData: Job[] = this.jobs;
   searchStatus = [];
   filterStatusList = [
     {text: 'Ready', value: 'Ready'},
@@ -23,14 +23,19 @@ export class JobsComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.jobs.length > 0) {
+      this.displayData = this.jobs;
+    }
   }
+
   filterStatusChange(value: string[]): void {
     this.searchStatus = value;
     this.search();
   }
+
   search(): void {
     const filterFunc = (item) => {
-      return (this.searchStatus.length ? this.searchStatus.some(statu => item.Last_Job_Status.indexOf(statu) !== -1) : true) ;
+      return (this.searchStatus.length ? this.searchStatus.some(statu => item.Last_Job_Status.indexOf(statu) !== -1) : true);
     };
     const data = this.jobs.filter(item => filterFunc(item));
     this.displayData = data;
