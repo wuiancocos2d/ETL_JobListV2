@@ -9,6 +9,11 @@ import {Job} from '../../core/models/job';
 })
 export class ExternalJobListComponent implements OnInit {
   jobs: Job[];
+  typeSelectValues = [
+    {text: 'ACCA', value: 'ACCA'},
+    {text: 'TravelSky', value: 'TravelSky'},
+  ];
+  typeName = 'Data_Type';
 
   constructor(
     private jobService: JobsService

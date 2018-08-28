@@ -9,12 +9,12 @@ import {Job} from '../../core/models/job';
 export class JobsComponent implements OnInit {
 
   @Input() jobs: Job[];
-<<<<<<< Updated upstream
-=======
   @Input() urlPrefix: string;
->>>>>>> Stashed changes
+  @Input() typeSelectValues: string[];
+  @Input() typeName: string;
   displayData: Job[] = this.jobs;
   searchStatus = [];
+  searchTypes = [];
   filterStatusList = [
     {text: 'Ready', value: 'Ready'},
     {text: 'Running', value: 'Running'},
@@ -37,16 +37,24 @@ export class JobsComponent implements OnInit {
     this.search();
   }
 
+  filterTypeChange(value: string[]): void {
+    this.searchTypes = value;
+    this.search();
+  }
+
   search(): void {
-    const filterFunc = (item) => {
-<<<<<<< Updated upstream
-      return (this.searchStatus.length ? this.searchStatus.some(statu => item.Last_Job_Status.indexOf(statu) !== -1) : true);
-=======
-      return (this.searchStatus.length ? this.searchStatus
-        .some(statu => item.Last_Job_Status.indexOf(statu) !== -1) : true);
->>>>>>> Stashed changes
+    const filterTypeFunc = (item) => {
+      return (this.searchTypes.length ? this.searchTypes
+        .some(statu => item[this.typeName].indexOf(statu) !== -1) : true);
     };
-    const data = this.jobs.filter(item => filterFunc(item));
+    const filterStatusFunc = (item) => {
+      return (this.searchStatus.length ? this.searchStatus
+        .some(statu => {
+          console.log('status', statu);
+          return item.Last_Job_Status.indexOf(statu) !== -1;
+        }) : true);
+    };
+    const data = this.jobs.filter(item => filterStatusFunc(item)).filter(item => filterTypeFunc(item));
     this.displayData = data;
   }
 }

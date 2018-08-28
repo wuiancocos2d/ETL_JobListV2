@@ -4,6 +4,7 @@ export class Job {
   Data_Type?: string;
   Data_Sub_Type?: string;
   Last_TriggerTime?: string;
+  Data_Category_Folder?: string;
   Last_StartTime: string;
   Last_EndTime: string;
   Last_Job_Status: string;

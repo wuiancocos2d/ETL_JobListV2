@@ -1,16 +1,15 @@
 <app-container>
-<<<<<<< Updated upstream
-  <div class="jobs-operations">
-    <button nz-button >Select Data Type</button>
-  </div>
-=======
->>>>>>> Stashed changes
   <nz-table #jobsTable [nzData]="displayData">
     <thead>
     <tr>
-      <th>
+      <th *ngIf="typeSelectValues.length;else textth" nzShowFilter [nzFilters]="typeSelectValues" (nzFilterChange)="filterTypeChange($event)">
         Job Name
       </th>
+      <ng-template #textth>
+        <th>
+          Job Name
+        </th>
+      </ng-template>
       <th>
         Last_EndTime
       </th>
@@ -21,13 +20,7 @@
       <tr *ngFor="let job of jobsTable.data">
         <td>{{job.Job_Name}}</td>
         <td>{{job.Last_StartTime | slice: 11:16}}</td>
-<<<<<<< Updated upstream
         <td ><a routerLink="{{job.Job_Name}}">{{job.Last_Job_Status}}</a></td>
-=======
-        <td>
-          {{job.Last_Job_Status}}
-        </td>
->>>>>>> Stashed changes
       </tr>
     </tbody>
   </nz-table>
