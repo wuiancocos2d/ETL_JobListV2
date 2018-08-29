@@ -1,8 +1,8 @@
 <app-container>
-  <nz-table #jobsTable [nzData]="displayData">
+  <nz-table #jobsTable [nzData]="displayData"  [nzPageSize]="100">
     <thead>
     <tr>
-      <th *ngIf="typeSelectValues.length;else textth" nzShowFilter [nzFilters]="typeSelectValues" (nzFilterChange)="filterTypeChange($event)">
+      <th *ngIf="typeSelectValues.length;else textth" nzShowFilter  [nzFilters]="typeSelectValues" (nzFilterChange)="filterTypeChange($event)" >
         Job Name
       </th>
       <ng-template #textth>
@@ -10,17 +10,15 @@
           Job Name
         </th>
       </ng-template>
-      <th>
-        Last_EndTime
-      </th>
       <th nzShowFilter [nzFilters]="filterStatusList" (nzFilterChange)="filterStatusChange($event)">Status</th>
+      <th>Last_EndTime</th>
     </tr>
     </thead>
     <tbody>
       <tr *ngFor="let job of jobsTable.data">
-        <td>{{job.Job_Name}}</td>
+        <td><a routerLink="{{job.Job_Name}}">{{job.Job_Name}}</a></td>
+        <td >{{job.Last_Job_Status}}</td>
         <td>{{job.Last_StartTime | slice: 11:16}}</td>
-        <td ><a routerLink="{{job.Job_Name}}">{{job.Last_Job_Status}}</a></td>
       </tr>
     </tbody>
   </nz-table>

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input} from '@angular/core';
-import { Job } from '../../core/models/job';
+import {Component, OnInit, Input} from '@angular/core';
+import {Job} from '../../core/models/job';
 
 @Component({
   selector: 'app-job-detail',
@@ -8,9 +8,13 @@ import { Job } from '../../core/models/job';
 })
 export class JobDetailComponent implements OnInit {
   @Input() job: Job;
-  constructor() { }
+  dateFormat = 'yyyy/MM/dd';
+
+  constructor() {
+  }
 
   ngOnInit() {
+
   }
 
 }

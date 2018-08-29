@@ -19,6 +19,6 @@ import { JobDetailComponent } from './job-detail/job-detail.component';
     RouterModule,
   ],
   declarations: [HeaderComponent, ContainerComponent, JobsComponent, JobComponent, JobDetailComponent],
-  exports: [HeaderComponent, ContainerComponent, NgZorroAntdModule, JobsComponent],
+  exports: [HeaderComponent, ContainerComponent, NgZorroAntdModule, JobsComponent, JobDetailComponent],
 })
 export class ShareModule { }

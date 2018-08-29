@@ -12,6 +12,8 @@ export class JobsService {
 
   private eJobUrl = 'api/eJobs';
   private iJobUrl = 'api/iJobs';
+  private eDetailUrl = 'api/eJobs';
+  private iDetailUrl = 'api/iJobs';
 
   constructor(
     private http: HttpClient,
@@ -34,13 +36,27 @@ export class JobsService {
       );
   }
 
+  getJob(EoI: string, jobName: string): Observable<Job> {
+    let reqUrl = '';
+    if (EoI === 'E') {
+      reqUrl = this.eDetailUrl + '?Job_Name=' + jobName;
+    } else if (EoI === 'I') {
+      reqUrl = this.iDetailUrl + '?Job_Name=' + jobName;
+    } else {
+      return null;
+    }
+    return this.http.get<Job>(reqUrl).pipe(
+        catchError(this.handleError<Job>('getJob'))
+      );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
@@ -53,6 +69,7 @@ export class JobsService {
       return of(result as T);
     };
   }
+
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     this.messageService.add('HeroService: ' + message);

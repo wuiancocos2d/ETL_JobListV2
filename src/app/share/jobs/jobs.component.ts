@@ -50,11 +50,9 @@ export class JobsComponent implements OnInit {
     const filterStatusFunc = (item) => {
       return (this.searchStatus.length ? this.searchStatus
         .some(statu => {
-          console.log('status', statu);
           return item.Last_Job_Status.indexOf(statu) !== -1;
         }) : true);
     };
-    const data = this.jobs.filter(item => filterStatusFunc(item)).filter(item => filterTypeFunc(item));
-    this.displayData = data;
+    this.displayData = this.jobs.filter(item => filterStatusFunc(item)).filter(item => filterTypeFunc(item));
   }
 }

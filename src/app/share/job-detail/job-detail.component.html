@@ -1,3 +1,14 @@
-<p>
-  job-detail works!
-</p>
+<div class="job-container" *ngIf="job">
+  <nz-card [nzTitle]="'Job Detail Information'">
+    <nz-card nzType="inner" [nzTitle]="job.Job_Name" >
+      <p *ngIf="job.GetData_day">Get Date: {{job.GetData_day}}</p>
+      <p *ngIf="job.Data_Type">Data Type: {{job.Data_Type}}</p>
+      <p *ngIf="job.Data_Category_Folder"> Data Folder: {{job.Data_Category_Folder}}</p>
+      <p *ngIf="job.Last_StartTime">Last Start Time: {{job.Last_StartTime | slice:0:10 |date:"yyyy/MM/dd"}} : {{job.Last_StartTime | slice: 11:22}}</p>
+      <p *ngIf="job.Last_EndTime">Last End Time: {{job.Last_EndTime | slice:0:10 |date:"yyyy/MM/dd"}} : {{job.Last_EndTime | slice: 11:22}}</p>
+      <nz-divider nzText="Update Status" nzOrientation="left"></nz-divider>
+      <p *ngIf="job.Last_Tx_Dt">Job Date: {{job.Last_Tx_Dt}}</p>
+      <nz-date-picker  nzFormat="dateFormat" nzPlaceHolder="Update Time"></nz-date-picker>
+    </nz-card>
+  </nz-card>
+</div>
