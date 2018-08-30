@@ -7,9 +7,7 @@ import { RouterModule } from '@angular/router';
 import { JobsComponent } from './jobs/jobs.component';
 import { JobComponent } from './job/job.component';
 import { JobDetailComponent } from './job-detail/job-detail.component';
-
-
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,6 +15,7 @@ import { JobDetailComponent } from './job-detail/job-detail.component';
     CommonModule,
     NgZorroAntdModule,
     RouterModule,
+    FormsModule,
   ],
   declarations: [HeaderComponent, ContainerComponent, JobsComponent, JobComponent, JobDetailComponent],
   exports: [HeaderComponent, ContainerComponent, NgZorroAntdModule, JobsComponent, JobDetailComponent],

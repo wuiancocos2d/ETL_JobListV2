@@ -8,7 +8,14 @@
       <p *ngIf="job.Last_EndTime">Last End Time: {{job.Last_EndTime | slice:0:10 |date:"yyyy/MM/dd"}} : {{job.Last_EndTime | slice: 11:22}}</p>
       <nz-divider nzText="Update Status" nzOrientation="left"></nz-divider>
       <p *ngIf="job.Last_Tx_Dt">Job Date: {{job.Last_Tx_Dt}}</p>
-      <nz-date-picker  nzFormat="dateFormat" nzPlaceHolder="Update Time"></nz-date-picker>
+      <nz-date-picker  [nzFormat]="dateFormat" [(ngModel)]="updateDate"></nz-date-picker>
+      <p *ngIf="job.Last_Job_Status">Last Status: {{job.Last_Job_Status}}</p>
+      <nz-select style="width: 174px;" nzAllowClear nzPlaceHolder="Select a status" [(ngModel)]="updateStatus">
+        <nz-option nzValue="Ready" nzLabel="Ready"></nz-option>
+        <nz-option nzValue="Done" nzLabel="Done"></nz-option>
+      </nz-select>
+      <nz-alert *ngIf="errorMessage" nzType="error" [nzMessage]="errorMessage" nzShowIcon></nz-alert>
+      <button class="subBtn" nz-button [nzSize]="'large'" nzType="primary">Submit</button>
     </nz-card>
   </nz-card>
 </div>

@@ -8,7 +8,10 @@ import {Job} from '../../core/models/job';
 })
 export class JobDetailComponent implements OnInit {
   @Input() job: Job;
-  dateFormat = 'yyyy/MM/dd';
+  dateFormat = 'yyyy-MM-dd';
+  updateStatus = '';
+  updateDate = '';
+  errorMessage: string;
 
   constructor() {
   }
