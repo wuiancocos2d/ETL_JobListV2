@@ -46,8 +46,12 @@ export class JobsService {
       return null;
     }
     return this.http.get<Job>(reqUrl).pipe(
-        catchError(this.handleError<Job>('getJob'))
-      );
+      catchError(this.handleError<Job>('getJob'))
+    );
+  }
+
+  updateJobStatus(): Observable<string> {
+
   }
 
   /**
