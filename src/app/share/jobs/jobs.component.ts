@@ -10,11 +10,8 @@ export class JobsComponent implements OnInit {
 
   @Input() jobs: Job[];
   @Input() urlPrefix: string;
-  @Input() typeSelectValues: string[];
-  @Input() typeName: string;
   displayData: Job[] = this.jobs;
   searchStatus = [];
-  searchTypes = [];
   filterStatusList = [
     {text: 'Ready', value: 'Ready'},
     {text: 'Running', value: 'Running'},
@@ -37,22 +34,12 @@ export class JobsComponent implements OnInit {
     this.search();
   }
 
-  filterTypeChange(value: string[]): void {
-    this.searchTypes = value;
-    this.search();
-  }
-
   search(): void {
-    const filterTypeFunc = (item) => {
-      return (this.searchTypes.length ? this.searchTypes
-        .some(statu => item[this.typeName].indexOf(statu) !== -1) : true);
-    };
-    const filterStatusFunc = (item) => {
+    const filterFunc = (item) => {
       return (this.searchStatus.length ? this.searchStatus
-        .some(statu => {
-          return item.Last_Job_Status.indexOf(statu) !== -1;
-        }) : true);
+        .some(statu => item.Last_Job_Status.indexOf(statu) !== -1) : true);
     };
-    this.displayData = this.jobs.filter(item => filterStatusFunc(item)).filter(item => filterTypeFunc(item));
+    const data = this.jobs.filter(item => filterFunc(item));
+    this.displayData = data;
   }
 }
