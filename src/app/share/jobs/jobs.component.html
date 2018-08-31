@@ -1,5 +1,5 @@
 <app-container>
-  <nz-table #jobsTable [nzData]="displayData"  [nzPageSize]="100">
+  <nz-table #jobsTable [nzData]="displayData"  [nzPageSize]="100" [nzLoading] = "loading">
     <thead>
     <tr>
       <th *ngIf="typeSelectValues.length;else textth" nzShowFilter  [nzFilters]="typeSelectValues" (nzFilterChange)="filterTypeChange($event)" >

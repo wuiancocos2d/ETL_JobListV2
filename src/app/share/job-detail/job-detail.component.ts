@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Job} from '../../core/models/job';
+import {JobsService} from '../../core/services/jobs.service';
 
 @Component({
   selector: 'app-job-detail',
@@ -8,13 +9,16 @@ import {Job} from '../../core/models/job';
 })
 export class JobDetailComponent implements OnInit {
   @Input() job: Job;
+  @Input() jobType: string;
   dateFormat = 'yyyy-MM-dd';
   updateStatus = '';
   updateDate = '';
   errorMessage: string;
   updateDateString = '';
 
-  constructor() {
+  constructor(
+    private jobService: JobsService
+  ) {
   }
 
   ngOnInit() {
@@ -34,12 +38,19 @@ export class JobDetailComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.updateDateString.length || !this.updateStatus.length) {
+    if (!this.updateDateString.length || !this.updateStatus.length || !this.jobType) {
       this.errorMessage = 'Please Fill necessary ';
     } else {
       this.errorMessage = null;
+      const postString = this.getPostString();
+      this.jobService.updateJobStatus(this.jobType, postString)
+        .subscribe(message => {
+          console.log(message);
+        });
     }
-
   }
 
+  getPostString() {
+    return 'Job_Name=' + this.job.Job_Name + '&Last_Tx_Dt=' + this.updateDateString + '&Last_Job_Status=' + this.updateStatus;
+  }
 }

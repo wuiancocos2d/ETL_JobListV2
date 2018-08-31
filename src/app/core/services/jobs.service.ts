@@ -9,11 +9,21 @@ import {catchError} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class JobsService {
-
+  /* Test */
   private eJobUrl = 'api/eJobs';
   private iJobUrl = 'api/iJobs';
   private eDetailUrl = 'api/eJobs';
   private iDetailUrl = 'api/iJobs';
+  private eUpdate = 'api/eJobs';
+  private iUpdate = 'api/iJobs';
+
+  /* Production */
+  // private eJobUrl = '../api/ejob_list.ashx';
+  // private iJobUrl = '../api/ijob_list.ashx';
+  // private eDetailUrl = '../api/ejob_query.ashx';
+  // private iDetailUrl = '../api/ijob_query.ashx';
+  // private eUpdate = 'api/eJobs';
+  // private iUpdate = 'api/iJobs';
 
   constructor(
     private http: HttpClient,
@@ -39,8 +49,10 @@ export class JobsService {
   getJob(EoI: string, jobName: string): Observable<Job> {
     let reqUrl = '';
     if (EoI === 'E') {
+      // reqUrl = this.eDetailUrl + '?Job_Name=' + jobName;
       reqUrl = this.eDetailUrl + '?Job_Name=' + jobName;
     } else if (EoI === 'I') {
+      // reqUrl = this.iDetailUrl + '?Job_Name=' + jobName;
       reqUrl = this.iDetailUrl + '?Job_Name=' + jobName;
     } else {
       return null;
@@ -50,8 +62,19 @@ export class JobsService {
     );
   }
 
-  updateJobStatus(): Observable<string> {
-
+  updateJobStatus(EoI: string, jobStatus: string): Observable<string> {
+    let reqUrl = '';
+    if (EoI === 'E') {
+      reqUrl = this.eDetailUrl;
+    } else if (EoI === 'I') {
+      reqUrl = this.iDetailUrl;
+    } else {
+      return null;
+    }
+    return this.http.post<string>(reqUrl, jobStatus)
+      .pipe(
+        catchError(this.handleError('Update error', null))
+      );
   }
 
   /**

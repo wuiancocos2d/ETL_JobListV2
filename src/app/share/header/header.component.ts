@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  isSubNavIsCollapsed = false;
+  isSideNavCollapsed = false;
 
   constructor() {
   }
@@ -15,7 +15,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleSubNav(): void {
-    this.isSubNavIsCollapsed = !this.isSubNavIsCollapsed;
+  toggleSideMenu () {
+    this.isSideNavCollapsed =  !this.isSideNavCollapsed;
+  }
+  openSideMenu() {
+    this.isSideNavCollapsed = true;
+  }
+  closeSideMenu() {
+    this.isSideNavCollapsed = false;
   }
 }

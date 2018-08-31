@@ -22,6 +22,7 @@ export class JobsComponent implements OnInit {
     {text: 'Done', value: 'Done'},
     {text: 'Error', value: 'Error'}
   ];
+  loading = true;
 
   constructor() {
   }
@@ -29,6 +30,7 @@ export class JobsComponent implements OnInit {
   ngOnInit() {
     if (this.jobs.length > 0) {
       this.displayData = this.jobs;
+      this.loading = false;
     }
   }
 
