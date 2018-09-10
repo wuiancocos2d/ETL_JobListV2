@@ -12,14 +12,12 @@ import {AppRoutingModule} from './app-routing.module';
 import { ShareModule } from './share/share.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './core/mock/mock.service';
-import { LoginComponent } from './login/login.component';
 
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,

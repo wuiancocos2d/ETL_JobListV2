@@ -20,6 +20,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'login',
+    loadChildren: './login/login.module#LoginModule'
+  },
 ];
 
 @NgModule({

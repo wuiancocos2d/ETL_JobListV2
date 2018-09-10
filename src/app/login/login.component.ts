@@ -1,5 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -23,9 +28,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      uid: [ null, [ Validators.required ] ],
-      pwd: [ null, [ Validators.required ] ],
-      remember: [ true ]
+      userName: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      remember: [true]
     });
   }
 }
