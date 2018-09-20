@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Job} from '../models/job';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {MessageService} from './message.service';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
@@ -10,21 +10,25 @@ import {catchError} from 'rxjs/operators';
 })
 export class JobsService {
   /* Test */
-  private eJobUrl = 'api/eJobs';
-  private iJobUrl = 'api/iJobs';
-  private eDetailUrl = 'api/eJobs';
-  private iDetailUrl = 'api/iJobs';
-  private eUpdate = 'api/eJobs';
-  private iUpdate = 'api/iJobs';
-
-  /* Production */
-  // private eJobUrl = '../api/ejob_list.ashx';
-  // private iJobUrl = '../api/ijob_list.ashx';
-  // private eDetailUrl = '../api/ejob_query.ashx';
-  // private iDetailUrl = '../api/ijob_query.ashx';
+  // private eJobUrl = 'api/eJobs';
+  // private iJobUrl = 'api/iJobs';
+  // private eDetailUrl = 'api/eJobs';
+  // private iDetailUrl = 'api/iJobs';
   // private eUpdate = 'api/eJobs';
   // private iUpdate = 'api/iJobs';
 
+  /* Production */
+  private eJobUrl = '../api/ejob_list.ashx';
+  private iJobUrl = '../api/ijob_list.ashx';
+  private eDetailUrl = '../api/ejob_query.ashx';
+  private iDetailUrl = '../api/ijob_query.ashx';
+  private eUpdate = 'api/eJobs';
+  private iUpdate = 'api/iJobs';
+
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/x-www-form-urlencoded',
+    // 'Access-Control-Allow-Credentials': 'true',
+  });
   constructor(
     private http: HttpClient,
     private messageService: MessageService
@@ -71,7 +75,7 @@ export class JobsService {
     } else {
       return null;
     }
-    return this.http.post<string>(reqUrl, jobStatus)
+    return this.http.post<string>(reqUrl, jobStatus, {headers: this.headers})
       .pipe(
         catchError(this.handleError('Update error', null))
       );

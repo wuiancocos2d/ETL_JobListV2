@@ -39,6 +39,7 @@ export class JobDetailComponent implements OnInit {
 
   onSubmit(): void {
     if (!this.updateDateString.length || !this.updateStatus.length || !this.jobType) {
+      console.log('this', !this.updateDateString.length , !this.updateStatus.length , this.jobType);
       this.errorMessage = 'Please Fill necessary ';
     } else {
       this.errorMessage = null;
