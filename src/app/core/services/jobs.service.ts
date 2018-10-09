@@ -10,20 +10,20 @@ import {catchError} from 'rxjs/operators';
 })
 export class JobsService {
   /* Test */
-  // private eJobUrl = 'api/eJobs';
-  // private iJobUrl = 'api/iJobs';
-  // private eDetailUrl = 'api/eJobs';
-  // private iDetailUrl = 'api/iJobs';
-  // private eUpdate = 'api/eJobs';
-  // private iUpdate = 'api/iJobs';
-
-  /* Production */
-  private eJobUrl = '../api/ejob_list.ashx';
-  private iJobUrl = '../api/ijob_list.ashx';
-  private eDetailUrl = '../api/ejob_query.ashx';
-  private iDetailUrl = '../api/ijob_query.ashx';
+  private eJobUrl = 'api/eJobs';
+  private iJobUrl = 'api/iJobs';
+  private eDetailUrl = 'api/eJobs';
+  private iDetailUrl = 'api/iJobs';
   private eUpdate = 'api/eJobs';
   private iUpdate = 'api/iJobs';
+
+  /* Production */
+  // private eJobUrl = '../api/ejob_list.ashx';
+  // private iJobUrl = '../api/ijob_list.ashx';
+  // private eDetailUrl = '../api/ejob_query.ashx';
+  // private iDetailUrl = '../api/ijob_query.ashx';
+  // private eUpdate = 'api/eJobs';
+  // private iUpdate = 'api/iJobs';
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/x-www-form-urlencoded',

@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Job} from './models/job';
-
+import {User} from './models/User';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-
+import {AuthService} from './services/auth.service';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
     HttpHeaders,
   ],
   declarations: [],
-  exports: [Job],
+  exports: [Job, User, AuthService],
 })
 export class CoreModule {
 }

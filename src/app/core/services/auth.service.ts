@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse} from '@angular
 import {observable, Observable, throwError} from 'rxjs';
 import {tap, catchError} from 'rxjs/operators';
 import {MessageService} from './message.service';
+import { User } from '../models/User';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'})
@@ -19,7 +20,7 @@ interface AuthMsg {
 })
 
 export class AuthService {
-  private loginUrl = '../api/login.ashx';
+  private loginUrl = 'https://app.airmacau.com.mo:8080/etl/api/login.ashx';
   isLoggedIn = false;
   redirectUrl: string;
   constructor(
@@ -29,8 +30,8 @@ export class AuthService {
 
   }
 
-  loginAuth(loginUser: string) {
-    return this.http.post(this.loginUrl, loginUser, httpOptions)
+  loginAuth(user: User) {
+    return this.http.post(this.loginUrl, 'uid=' + user.usr + '&pwd=' + user.psd, httpOptions)
       .pipe(
         tap(
           (res: AuthMsg) => {
@@ -49,7 +50,6 @@ export class AuthService {
 
   private handleErrors(error: HttpErrorResponse) {
     this.messageService.add(JSON.stringify(error));
-    console.log(1);
     return throwError(error);
   }
 
